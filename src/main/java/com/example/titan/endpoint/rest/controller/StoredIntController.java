@@ -12,10 +12,6 @@ public class StoredIntController {
 
   @GetMapping("/stored-int")
   public String getStoredInt() {
-    try {
-      return storedIntService.getStoredInt();
-    } catch (Exception e) {
-      return e.toString();
-    }
+    return storedIntService.getStoredInt();
   }
 }
