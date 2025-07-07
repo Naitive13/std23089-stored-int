@@ -2,7 +2,6 @@ package com.example.titan.endpoint.rest.controller;
 
 import com.example.titan.service.StoredIntService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,8 +11,11 @@ public class StoredIntController {
   public final StoredIntService storedIntService;
 
   @GetMapping("/stored-int")
-  public ResponseEntity getStoredInt() {
-    String result = storedIntService.getStoredInt();
-    return ResponseEntity.ok().body(result);
+  public String getStoredInt() {
+    try {
+      return storedIntService.getStoredInt();
+    } catch (Exception e) {
+      return e.toString();
+    }
   }
 }
