@@ -1,11 +1,12 @@
 package com.example.titan.service;
 
+import org.springframework.stereotype.Service;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+@Service
 public class StoredIntService {
   public String getStoredInt() {
     String filename = "stored-int.txt";
