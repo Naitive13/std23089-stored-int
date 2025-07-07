@@ -3,7 +3,13 @@ package com.example.titan.service;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.PosixFilePermission;
+import java.nio.file.attribute.PosixFilePermissions;
 import java.util.Scanner;
+import java.util.Set;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,6 +20,9 @@ public class StoredIntService {
       int randomInt = (int) (Math.random() * 10);
 
       if (file.createNewFile()) {
+        Path path = Paths.get("stored-int.txt");
+        Set<PosixFilePermission> permissions = PosixFilePermissions.fromString("rw-rw-rw-");
+        Files.setPosixFilePermissions(path, permissions);
         FileWriter fileWriter = new FileWriter(file);
         fileWriter.write(String.valueOf(randomInt));
         fileWriter.close();
