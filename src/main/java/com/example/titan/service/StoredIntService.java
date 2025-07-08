@@ -10,15 +10,10 @@ import org.springframework.stereotype.Service;
 public class StoredIntService {
   public String getStoredInt() {
     try {
-      File file = new File("stored-int.txt");
+      File file = new File("/tmp/stored-int.txt");
       int randomInt = (int) (Math.random() * 10);
 
       if (file.createNewFile()) {
-        //        Path path = Paths.get("stored-int.txt");
-        //        Set<PosixFilePermission> permissions =
-        // PosixFilePermissions.fromString("rw-rw-rw-");
-        file.setWritable(true, false);
-        //        Files.setPosixFilePermissions(path, permissions);
         FileWriter fileWriter = new FileWriter(file);
         fileWriter.write(String.valueOf(randomInt));
         fileWriter.close();
